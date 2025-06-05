@@ -1,0 +1,9 @@
+# Ignorer les fichiers spécifiques à PhpStorm
+.idea/
+
+# Fichiers temporaires
+*.log
+*.tmp
+
+#config base de données
+inc/db_connect.php

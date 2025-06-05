@@ -1,5 +1,5 @@
 <?php
-file_put_contents(__DIR__ . '/debug.log', json_encode($_POST) . "\n", FILE_APPEND);
+
 session_start();
 require_once(__DIR__ . '/../inc/requires.php');
 
