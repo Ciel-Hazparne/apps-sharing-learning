@@ -6,7 +6,7 @@ require_once(__DIR__ . '/../inc/requires.php');
 $dataApp = $_GET;
 
 if (!isset($dataApp['id']) || !is_numeric($dataApp['id'])) {
-    echo "Il faut l'identifiant de l'application pour la modifier.";
+    echo "Il faut indiquer l'identifiant de l'application pour la modifier.";
     return;
 }
 
