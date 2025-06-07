@@ -65,7 +65,11 @@ $createdApp = createApp($pdo, $name, $description, $creator, $file);
         <?php if ($file): ?>
             <p class="card-text"><b>Fichier</b> : <a href="../files/<?= $file ?>" target="_blank"><?= $file ?></a></p>
         <?php endif; ?>
+        <a href="../pages/home.php" class="btn btn-dark">
+            <i class="fa fa-reply"></i> Retour à l'accueil
+        </a>
     </div>
+
 </div>
 
 <?php require_once(__DIR__ . '/../partials/footer.html.php'); ?>

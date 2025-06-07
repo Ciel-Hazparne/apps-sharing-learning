@@ -28,12 +28,17 @@ require_once(__DIR__ . '/../partials/header.html.php');
                                 <i class="fa fa-hand-o-left"></i> Infos</span>
                         </a>
                     </h4>
-                    <p class="card-text"><?= nl2br(htmlspecialchars($app['description'])); ?></p>
-                    <span class="card-text">Télécharger l'appli :
+                    <p class="card-text text-danger-emphasis"><i class="fa fa-file-code-o text-secondary"></i> <?= nl2br(htmlspecialchars($app['description'])); ?></p>
+                    <span class="card-text"><i class="fa fa-download text-secondary"></i> Télécharger l'appli :
                     <a href="../files/<?= $app['file']; ?>"
                        class="text-decoration-none text-primary"> <?= htmlspecialchars($app['name']); ?>
                     </a></span>
-                    <p class="mt-2 mb-0 text-muted">
+                    <?php $commentCount = countComments($pdo, $app['app_id']); ?>
+                    <p class="mt-2 mb-0">
+                        <i class="fa fa-comments-o text-secondary"></i>
+                        Commentaires : <?= $commentCount ?>
+                    </p>
+                    <p class="mt-2 mb-0 text-muted"><i class="fa fa-user text-secondary"></i>
                         <small>Créateur : <?= displayCreator($app['creator'], $users); ?></small>
                     </p>
                 </div>

@@ -13,3 +13,16 @@ function createComment(PDO $pdo, int $user_id, int $app_id, string $details): vo
         'comment' => $details,
     ]);
 }
+
+function countComments(PDO $pdo, int $appId): int
+{
+    $sql = "
+        SELECT COUNT(*)
+        FROM comments
+        WHERE app_id = :app_id"
+    ;
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['app_id' => $appId]);
+    return (int)$stmt->fetchColumn();
+}
+

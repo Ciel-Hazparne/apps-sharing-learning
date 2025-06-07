@@ -35,7 +35,7 @@ require_once(__DIR__ . '/../partials/header.html.php');
 <div>
     <?php if ($deleted): ?>
         <h1>Application supprimée avec succès</h1>
-        <a href="/index.php" class="btn btn-secondary">Retour à l’accueil</a>
+        <a href="/index.php" class="btn btn-secondary"><i class="fa fa-reply"></i> Retour à l’accueil</a>
     <?php else: ?>
         <div class="alert alert-danger">La suppression a échoué.</div>
     <?php endif; ?>

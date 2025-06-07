@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : dim. 01 juin 2025 à 19:08
--- Version du serveur : 8.0.41-0ubuntu0.24.04.1
+-- Généré le : sam. 07 juin 2025 à 13:51
+-- Version du serveur : 8.0.42-0ubuntu0.24.04.1
 -- Version de PHP : 8.3.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,21 +29,22 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `apps` (
   `app_id` int NOT NULL,
-  `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `is_enabled` tinyint(1) NOT NULL,
+  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+  `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `file` varchar(255) NOT NULL,
+  `is_enabled` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `apps`
 --
 
-INSERT INTO `apps` (`app_id`, `creator`, `is_enabled`, `description`, `name`) VALUES
-(1, 'ciel.ir1@ciel-ir.eh', 1, 'Appli Qt calculs sous-réseaux', 'App Qt_sous-réseaux'),
-(2, 'ciel.ir2@ciel-ir.eh', 1, 'Appli Power Shell installation logiciel', 'App PS_installation logiciel'),
-(3, 'ciel.ir3@ciel-ir.eh', 1, 'Appli Symfony 6.4 Système Pluvio', 'App SF64_Pluviométrie'),
-(4, 'ciel.ir4@ciel-ir.eh', 1, 'Appli Symfony 6.4 Système Accsès GSM', 'App SF64_Accès GSM');
+INSERT INTO `apps` (`app_id`, `name`, `description`, `creator`, `file`, `is_enabled`) VALUES
+(1, 'App Qt_sous-réseaux', 'Application en Qt de calcul de sous-réseaux', 'ciel.ir1@ciel-ir.eh', 'app_68429d3ab0be99.87554209.zip', 1),
+(2, 'App PS_installation logiciel', 'Appli Power Shell installation logiciel', 'ciel.ir2@ciel-ir.eh', '', 1),
+(3, 'App SF64_Pluviométrie', 'Appli Symfony 6.4 Système Pluvio', 'ciel.ir3@ciel-ir.eh', '', 1),
+(4, 'App SF64_Accès GSM', 'Appli Symfony 6.4 Système Accsès GSM', 'ciel.ir4@ciel-ir.eh', '', 1);
 
 -- --------------------------------------------------------
 
@@ -55,8 +56,19 @@ CREATE TABLE `comments` (
   `comment_id` int NOT NULL,
   `user_id` int NOT NULL,
   `app_id` int NOT NULL,
-  `comment` longtext NOT NULL
+  `comment` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `comments`
+--
+
+INSERT INTO `comments` (`comment_id`, `user_id`, `app_id`, `comment`, `created_at`) VALUES
+(1, 2, 1, 'Je vous propose d\'ajouter un champ CIDR qui sera calculé automatiquement en fonction du masque saisi.', '2025-06-07 15:45:11'),
+(2, 1, 3, 'Serait-il possible d\'avoir un affichage du niveau des cuves ?', '2025-06-07 15:45:11'),
+(3, 3, 4, 'Serait-il possible de proposer également une requête par SMS ?', '2025-06-07 15:45:11'),
+(4, 4, 2, 'ciel.ir2, as-tu envisagé d\'inclure une recherche de fichiers à installer ?', '2025-06-07 15:45:11');
 
 -- --------------------------------------------------------
 
@@ -77,10 +89,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `full_name`, `age`, `email`, `password`) VALUES
-(1, 'ciel.ir1@ciel-ir.eh', 19, 'CIEL IR1', 'ciel.ir1@ciel-ir.eh'),
-(2, 'ciel.ir2@ciel-ir.eh', 19, 'CIEL IR2', 'ciel.ir2@ciel-ir.eh'),
-(3, 'ciel.ir3@ciel-ir.eh', 20, 'CIEL IR3', 'ciel.ir3@ciel-ir.eh'),
-(4, 'ciel.ir4@ciel-ir.eh', 19, 'CIEL IR4', 'ciel.ir4@ciel-ir.eh');
+(1, 'CIEL IR1', 19, 'ciel.ir1@ciel-ir.eh', 'ciel-ir1'),
+(2, 'CIEL IR2', 19, 'ciel.ir2@ciel-ir.eh', 'ciel-ir2'),
+(3, 'CIEL IR3', 20, 'ciel.ir3@ciel-ir.eh', 'ciel-ir3'),
+(4, 'CIEL IR4', 19, 'ciel.ir4@ciel-ir.eh', 'ciel-ir4');
 
 --
 -- Index pour les tables déchargées
@@ -114,13 +126,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `apps`
 --
 ALTER TABLE `apps`
-  MODIFY `app_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `app_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `users`
