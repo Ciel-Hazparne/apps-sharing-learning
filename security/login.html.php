@@ -17,7 +17,7 @@
             <label for="password" class="form-label">Mot de passe</label>
             <input type="password" class="form-control" id="password" name="password">
         </div>
-        <button type="submit" class="btn btn-primary">Connexion</button>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Connexion</button>
     </form>
     <!-- Si l'utilisateur est bien connectée on affiche un message de succès -->
 <?php else : ?>

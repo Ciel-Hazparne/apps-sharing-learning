@@ -2,19 +2,31 @@
 session_start();
 
 require_once(__DIR__ . '/../security/isConnected.php');
+require_once(__DIR__ . '/../partials/header.html.php');
 ?>
 <div>
     <h1>Ajouter une appli</h1>
-    <form action="apps_create.php" method="POST">
+    <form action="app_create.php" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="name" class="form-label">Titre de l'appli</label>
             <input type="text" class="form-control" id="name" name="name">
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description de l'appli</label>
+            <label for="app"></label>
             <textarea class="form-control" placeholder="Fonctionnalités essentielles en quelques lignes." id="app" name="app"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <div class="mb-3">
+            <label for="file">Importez votre appli compressée (format Zip)</label>
+            <input type="file" class="form-control" id="file" name="file">
+        </div>
+
+        <div class="mt-4">
+            <a href="../pages/home.php" class="btn btn-dark">
+                <i class="fa fa-reply"></i> Retour
+            </a>
+            <button type="submit" class="btn btn-success"><i class="fa fa-upload"></i> Ajouter</button>
+        </div>
     </form>
 </div>
 

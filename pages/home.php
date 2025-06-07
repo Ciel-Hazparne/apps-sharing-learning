@@ -21,20 +21,30 @@ require_once(__DIR__ . '/../partials/header.html.php');
         <div class="col-md-6 col-lg-4 mb-4">
             <div class="card h-100 shadow-sm border-primary">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">
-                        <a href="../apps/apps_read.php?id=<?= $app['app_id']; ?>"
-                           class="text-decoration-none text-primary">
-                            <?= htmlspecialchars($app['name']); ?>
+                    <h4 class="card-title">
+                        <a href="../apps/app_read.php?id=<?= $app['app_id']; ?>"
+                           class="text-decoration-none text-primary"> <?= htmlspecialchars($app['name']); ?>
+                            <span class="ms-2 text-info" style="font-size: 1rem;">
+                                <i class="fa fa-hand-o-left"></i> Infos</span>
                         </a>
-                    </h5>
+                    </h4>
                     <p class="card-text"><?= nl2br(htmlspecialchars($app['description'])); ?></p>
-                    <p class="mt-auto mb-0 text-muted">
-                        <small><?= displayAuthor($app['author'], $users); ?></small>
+                    <span class="card-text">Télécharger l'appli :
+                    <a href="../files/<?= $app['file']; ?>"
+                       class="text-decoration-none text-primary"> <?= htmlspecialchars($app['name']); ?>
+                    </a></span>
+                    <p class="mt-2 mb-0 text-muted">
+                        <small>Créateur : <?= displayCreator($app['creator'], $users); ?></small>
                     </p>
                 </div>
                 <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between">
-                    <a href="../apps/apps_update.php?id=<?= $app['app_id']; ?>" class="btn btn-sm btn-warning">Modifier</a>
-                    <a href="../apps/apps_delete.php?id=<?= $app['app_id']; ?>" class="btn btn-sm btn-danger">Supprimer</a>
+                    <a href="../apps/app_update.html.php?id=<?= $app['app_id']; ?>" class="btn btn-sm btn-warning">
+                        <i class="fa fa-pencil-square-o"></i> Modifier</a>
+                    <a href="../apps/app_delete.php?id=<?= $app['app_id']; ?>"
+                       class="btn btn-sm btn-danger"
+                       onclick="return confirm('Etes-vous certain de vouloir supprimer cette application ? Cette action est irréversible.');">
+                        <i class="fa fa-trash-o"></i> Supprimer
+                    </a>
                 </div>
             </div>
         </div>

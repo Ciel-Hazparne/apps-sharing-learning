@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `apps` (
   `app_id` int NOT NULL,
-  `author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `is_enabled` tinyint(1) NOT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
@@ -39,7 +39,7 @@ CREATE TABLE `apps` (
 -- Déchargement des données de la table `apps`
 --
 
-INSERT INTO `apps` (`app_id`, `author`, `is_enabled`, `description`, `name`) VALUES
+INSERT INTO `apps` (`app_id`, `creator`, `is_enabled`, `description`, `name`) VALUES
 (1, 'ciel.ir1@ciel-ir.eh', 1, 'Appli Qt calculs sous-réseaux', 'App Qt_sous-réseaux'),
 (2, 'ciel.ir2@ciel-ir.eh', 1, 'Appli Power Shell installation logiciel', 'App PS_installation logiciel'),
 (3, 'ciel.ir3@ciel-ir.eh', 1, 'Appli Symfony 6.4 Système Pluvio', 'App SF64_Pluviométrie'),

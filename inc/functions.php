@@ -1,9 +1,9 @@
 <?php
 
-function displayAuthor(string $authorEmail, array $users): string
+function displayCreator(string $creatorEmail, array $users): string
 {
     foreach ($users as $user) {
-        if ($authorEmail === $user['email']) {
+        if ($creatorEmail === $user['email']) {
             return $user['full_name'] . '(' . $user['age'] . ' ans)';
         }
     }

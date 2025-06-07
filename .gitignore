@@ -5,5 +5,13 @@
 *.log
 *.tmp
 
+# Ignorer tout le contenu des dossiers files et images
+files/*
+images/*
+
+# Sauf le dossier lui-même
+!files/.gitkeep
+!images/.gitkeep
+
 #config base de données
 inc/db_connect.php
