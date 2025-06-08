@@ -1,4 +1,7 @@
-<?php require_once(__DIR__ . '/../partials/header.html.php'); ?>
+<?php
+require_once(__DIR__ . '/../partials/header.html.php');
+$pageTitle = "login";
+?>
 <!-- Si utilisateur/trice est non identifié(e), on affiche le formulaire -->
 <?php if (!isset($_SESSION['LOGGED_USER'])) : ?>
     <form action="login.php" method="POST">
@@ -19,6 +22,11 @@
         </div>
         <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Connexion</button>
     </form>
+    <!-- Si l'utilisateur n'a pas de ompte -->
+    <p class="mt-3">
+        <a href="registration.html.php">Créez votre compte</a>
+    </p>
+
     <!-- Si l'utilisateur est bien connectée on affiche un message de succès -->
 <?php else : ?>
     <div class="alert alert-success" role="alert">

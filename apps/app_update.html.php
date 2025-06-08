@@ -2,6 +2,7 @@
 session_start();
 
 require_once(__DIR__ . '/../inc/requires.php');
+$pageTitle = "Mise à jour App";
 
 $dataApp = $_GET;
 

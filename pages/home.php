@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once(__DIR__ . '/../inc/requires.php');
+$pageTitle = "Accueil";
 
 if (!isset($_SESSION['LOGGED_USER'])) {
     redirectToUrl('../index.php');

@@ -31,6 +31,9 @@
                             <?= htmlspecialchars($_SESSION['LOGGED_USER']['email']) ?></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="../users/profile.html.php"><i class="fa fa-user-circle"></i> Profil</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="../security/logout.php">
                             <i class="fa fa-sign-out"></i> Déconnexion
                         </a>
