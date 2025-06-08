@@ -26,7 +26,7 @@ apps-sharing/
     ├── partials/
     ├── security/
     ├── users/
-    ├── index.php
+    └── index.php
 ```
 
 ## Technologies utilisées
