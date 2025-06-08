@@ -52,5 +52,5 @@ Finaliser les fichiers suivants :
 - home.php
 - app_create.php
 - app_delete.php
-- app_show.php
+- app_read.php
 - db_apps_requests.php

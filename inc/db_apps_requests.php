@@ -43,7 +43,7 @@ function updateApp(PDO $pdo, int $id, string $name, string $description, string 
     ]);
 }
 // jointure LEFT JOIN entre les tables apps, comments et users
-/*function showApp(PDO $pdo, int $id): array|false
+/*function readApp(PDO $pdo, int $id): array|false
 {
     CODE à compléter
     return $stmt->fetchAll(PDO::FETCH_ASSOC);

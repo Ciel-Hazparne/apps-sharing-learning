@@ -25,7 +25,7 @@ if (isset($_SESSION['flash'])): ?>
 
 // ÉTAPE 3 : Récupérer l’ID et le convertir en entier (avec (int))
 // ÉTAPE 4 : Se connecter à la base de données avec getPDO()
-// ÉTAPE 5 : Appeler la fonction showApp($pdo, $id) qui retourne un tableau
+// ÉTAPE 5 : Appeler la fonction readApp($pdo, $id) qui retourne un tableau
 // contenant les informations de l’application ET des commentaires associés
 // => stocker le résultat dans la variable $appDetails
 
