@@ -95,7 +95,7 @@ if (isset($_SESSION['flash'])): ?>
 <?php endif; ?>
 
 <div class="mt-4">
-    <a href="../pages/home.php" class="btn btn-dark">
+    <a href="../pages/home.html.php" class="btn btn-dark">
         <i class="fa fa-reply"></i> Retour
     </a>
 </div>
