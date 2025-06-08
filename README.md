@@ -14,6 +14,8 @@
 
 ## Structure du projet
 
+
+```
 apps-sharing/
     ├── apps/
     ├── comments/
@@ -23,8 +25,7 @@ apps-sharing/
     ├── files/
     ├── index.php
     └── database.sql
-
----
+```
 
 ## Technologies utilisées
 - PHP 8.3 (procédural)
