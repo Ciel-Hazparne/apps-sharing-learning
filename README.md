@@ -19,12 +19,14 @@
 apps-sharing/
     ├── apps/
     ├── comments/
+    ├── files/
+    ├── images/
     ├── inc/
+    ├── pages/
     ├── partials/
     ├── security/
-    ├── files/
+    ├── users/
     ├── index.php
-    └── database.sql
 ```
 
 ## Technologies utilisées
