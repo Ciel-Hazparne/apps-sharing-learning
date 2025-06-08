@@ -2,38 +2,39 @@
 session_start();
 require_once(__DIR__ . '/../inc/requires.php');
 
-if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    echo "Identifiant manquant.";
-    return;
-}
+// ÉTAPE 1 : Vérifier que l’identifiant de l’application est bien présent dans l’URL
+// => il doit être passé en GET sous la forme ?id=NUMÉRO
+// - Si l’identifiant n’existe pas OU n’est pas un nombre, afficher une erreur et arrêter l’exécution
+// - Sinon, convertir l’identifiant en entier et le stocker dans $id
 
-$id = (int)$_GET['id'];
+// Exemple :
+// $id = (int) $_GET['id'];
 
-$pdo = getPDO();
-$app = retrieveApp($pdo, $id);
+// ÉTAPE 2 : Se connecter à la base de données via getPDO()
 
-if (!$app) {
-    echo "Application introuvable.";
-    return;
-}
+// ÉTAPE 3 : Récupérer l'application à supprimer avec la fonction retrieveApp($pdo, $id)
+// => permet de vérifier si elle existe et d’avoir accès au fichier associé
 
-// Supprime le fichier
-if (!empty($app['file'])) {
-    $filePath = __DIR__ . '/../files/' . $app['file'];
-    if (file_exists($filePath)) {
-        unlink($filePath);
-    }
-}
+// Si l’application n’existe pas (résultat = false), afficher une erreur et arrêter
 
-// Supprime de la base
-$stmt = $pdo->prepare('DELETE FROM apps WHERE app_id = :id');
-$deleted = $stmt->execute(['id' => $id]);
+// ÉTAPE 4 : Si l’application contient un fichier (champ 'file' non vide) :
+// - Construire le chemin complet du fichier avec __DIR__ . '/../files/' . $app['file']
+// - Vérifier que ce fichier existe réellement avec file_exists()
+// - Si oui, le supprimer avec unlink()
 
-require_once(__DIR__ . '/../partials/header.html.php');
+// ÉTAPE 5 : Supprimer l’application dans la base de données
+// - Préparer une requête SQL : DELETE FROM apps WHERE app_id = :id
+// - Exécuter cette requête avec l’identifiant
+
+// ÉTAPE 6 : Stocker le résultat dans une variable $deleted
+// Cette variable servira à afficher un message de succès ou d’échec
 ?>
 
+<?php require_once(__DIR__ . '/../partials/header.html.php'); ?>
+
+<!-- ÉTAPE 7 : Afficher un message en fonction du succès ou de l’échec de la suppression -->
 <div>
-    <?php if ($deleted): ?>
+    <?php if ($deleted ?? false): ?>
         <h1>Application supprimée avec succès</h1>
         <a href="/index.php" class="btn btn-secondary"><i class="fa fa-reply"></i> Retour à l’accueil</a>
     <?php else: ?>
