@@ -11,7 +11,7 @@ require_once(__DIR__ . '/../inc/requires.php');
 // ÉTAPE 1 : Vérification des champs obligatoires
 // - name et description doivent être présents
 // - trim() + strip_tags() pour nettoyer
-// - Si vide, stocker un flash message et rediriger vers le formulaire
+// - Si vide, stocker un message flash et rediriger vers le formulaire
 // ----------------------------
 /*if (____ || ____ || ____ === '' || ____ === '') {
     $_SESSION['flash'] = [
@@ -37,7 +37,7 @@ $uploadDir = __DIR__ . '/../files/';*/
 // - Vérifier extension .zip
 // - Générer un nom unique
 // - Déplacer le fichier
-// - Si erreur, stocker flash message et rediriger
+// - Si erreur, stocker message flash et rediriger
 // ----------------------------
 
 /*if (____) {
@@ -84,7 +84,7 @@ if (!move_uploaded_file($fileTmpPath, $destPath)) {
 $success = ____;*/
 
 // ----------------------------
-// ÉTAPE 5 : Flash message + stockage pour récapitulatif
+// ÉTAPE 5 : Message flash + stockage pour récapitulatif
 // ----------------------------
 
 /*if ($success) {
