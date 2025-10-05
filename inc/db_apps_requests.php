@@ -11,25 +11,19 @@ function getAllApps(PDO $pdo): array
     return $stmt->fetchAll();
 }
 
-// inc/db_apps_requests.php
-
-function createApp(PDO $pdo, string $name, string $description, string $creator, string $file, bool $isEnabled = true): string|false
+/*function createApp(PDO $pdo, ____________): string|false
 {
     $stmt = $pdo->prepare('
-        INSERT INTO apps(name, description, creator, file, is_enabled)
-        VALUES (:name, :description, :creator, :file, :is_enabled)
+        INSERT INTO apps(___________________)
+        VALUES (___________________________)
     ');
 
     $stmt->execute([
-        'name' => $name,
-        'description' => $description,
-        'creator' => $creator,
-        'file' => $file,
-        'is_enabled' => $isEnabled ? 1 : 0,
+        ___________________
     ]);
 
     return $pdo->lastInsertId();
-}
+}*/
 
 function retrieveApp(PDO $pdo, int $id): array|false
 {

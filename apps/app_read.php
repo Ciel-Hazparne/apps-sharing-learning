@@ -1,72 +1,90 @@
 <?php
-session_start();
+####################################################################
+# Le code à compléter est commenté pour ne pas déclencher d'erreur #
+####################################################################
 
-require_once(__DIR__ . '/../inc/requires.php');
-require_once(__DIR__ . '/../security/isConnected.php');
-require_once(__DIR__ . '/../partials/header.html.php');
+// démarrer la session
+//_____;
+// ----------------------------
+// ÉTAPE 1 : Affichage des messages flash (si présents)
+// ----------------------------
 
-if (isset($_SESSION['flash'])): ?>
-    <div class="alert alert-<?= $_SESSION['flash']['type']; ?>">
-        <?= $_SESSION['flash']['message']; ?>
-    </div>
-    <?php unset($_SESSION['flash']); ?>
-<?php endif; ?>
+/*if (isset($_SESSION['flash'])) {
+    // afficher le message avec alert Bootstrap
+    // puis unset($_SESSION['flash']);
+}*/
 
-<?php
-if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+// ----------------------------
+// ÉTAPE 2 : Vérification de l'ID d'application dans $_GET
+// - Doit être numérique et présent
+// - Sinon, afficher un message d'erreur
+// ----------------------------
+
+/*if (!isset($_GET['id']) || !____($_GET['id'])) {
     echo "Pas d'identifiant d'application valide.";
     return;
-}
+}*/
 
 $id = (int)$_GET['id'];
-$pdo = getPDO();
-$appDetails = readApp($pdo, $id);
 
-if (empty($appDetails)) {
-    echo "L'application n'existe pas.";
-    return;
-}
+// ----------------------------
+// ÉTAPE 3 : Récupérer les détails de l'application
+// - Se connecter à la BDD avec getPDO()
+// - Appeler la fonction readApp($pdo, $id)
+// - Si aucun résultat, afficher un message d'erreur
+// ----------------------------
 
-$app = [
-    'app_id'      => $appDetails[0]['app_id'],
-    'name'        => $appDetails[0]['name'],
-    'description' => $appDetails[0]['description'],
-    'creator'     => $appDetails[0]['creator'],
-    'file'        => $appDetails[0]['file'],
-    'comments'    => [],
-];
+/*$pdo = ____;
+$appDetails = ____;*/
 
-foreach ($appDetails as $detail) {
+// ----------------------------
+// ÉTAPE 4 : Construire le tableau $app
+// - Inclure l'application elle-même
+// - Inclure un sous-tableau 'comments' pour ses commentaires
+// ----------------------------
+
+/*$app = [
+        'app_id'      => ____,
+        'name'        => ____,
+        'description' => ____,
+        'creator'     => ____,
+        'file'        => ____,
+        'comments'    => [],
+];*/
+
+// Boucle pour ajouter les commentaires
+/*foreach ($appDetails as $detail) {
     if (!empty($detail['comment_id'])) {
         $app['comments'][] = [
-            'comment_id' => $detail['comment_id'],
-            'details'    => $detail['details'],
-            'user_id'    => (int) $detail['user_id'],
-            'full_name'  => $detail['full_name'],
-            'created_at' => $detail['comment_date'],
+                'comment_id' => ____,
+                'details'    => ____,
+                'user_id'    => ____,
+                'full_name'  => ____,
+                'created_at' => ____,
         ];
     }
-}
+}*/
+
+// ----------------------------
+// ÉTAPE 5 : Affichage de l'application
+// - Nom, description, fichier (si présent), créateur
+// ----------------------------
 ?>
 
-<h1><?= htmlspecialchars($app['name']) ?></h1>
+<!--    <h1><?php /*= htmlspecialchars($app['____']) */?></h1>
 
-<div class="row">
-    <article class="col">
-        <p><?= nl2br(htmlspecialchars($app['description'])) ?></p>
-        <?php if (!empty($app['file'])) : ?>
-            <a href="../files/<?= htmlspecialchars($app['file']); ?>" class="btn btn-sm btn-success mt-2" download>
-                <i class="fa fa-download"></i> Télécharger l’application
-            </a>
-        <?php endif; ?>
-    </article>
-    <aside class="col">
-        <p><i>Crée par <?= htmlspecialchars($app['creator']) ?></i></p>
-    </aside>
-</div>
+    <div class="row">
+        <article class="col">
+            <p><?php /*= nl2br(htmlspecialchars($app['____'])) */?></p>
+            <!-- Si fichier présent, lien de téléchargement -->
+        </article>
+        <aside class="col">
+            <p><i>Crée par <?php /*= htmlspecialchars($app['____']) */?></i></p>
+        </aside>
+    </div>-->
 
-<hr>
-<h2>Commentaires</h2>
+    <hr>
+    <h2>Commentaires</h2>
 
 <?php if (!empty($app['comments'])) : ?>
     <?php foreach ($app['comments'] as $comment) : ?>
@@ -79,19 +97,15 @@ foreach ($appDetails as $detail) {
     <p>Aucun commentaire pour le moment.</p>
 <?php endif; ?>
 
-<hr>
+    <hr>
 <?php if (isset($_SESSION['LOGGED_USER'])) : ?>
-    <div class="mb-3">
-        <a href="../comments/comment_create.html.php?app_id=<?= $app['app_id']; ?>"
-           class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> Laisser un commentaire
-        </a>
-    </div>
+    <!-- Bouton pour créer un commentaire -->
 <?php endif; ?>
 
-<div class="mt-4">
-    <a href="../pages/home.html.php" class="btn btn-dark">
-        <i class="fa fa-reply"></i> Retour
-    </a>
-</div>
+    <div class="mt-4">
+        <a href="../pages/home.html.php" class="btn btn-dark">
+            <i class="fa fa-reply"></i> Retour
+        </a>
+    </div>
 
 <?php require_once(__DIR__ . '/../partials/footer.html.php'); ?>
